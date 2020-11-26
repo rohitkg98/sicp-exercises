@@ -1,0 +1,6 @@
+(define (pascal-t r c)
+  (cond ((= r 1) 1)
+        ((= c 1) 1)
+        ((= r c) 1)
+        (else (+ (pascal-t (- r 1) c) (pascal-t (- r 1) (- c 1)))))
+  )

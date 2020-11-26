@@ -1,0 +1,11 @@
+#lang scheme
+(define (smallest-divisor n)
+  (define (find-divisor divisor)
+    (cond ((< n (* divisor divisor)) n)
+          ((= 0 (remainder n divisor)) divisor)
+          (else (find-divisor (+ 1 divisor)))
+          )
+    )
+  (find-divisor 2))
+(define (prime? n)
+  (= n (smallest-divisor n)))
