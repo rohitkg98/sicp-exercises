@@ -27,5 +27,15 @@
                 (error "Incorrect Password")))))
     dispatch))
 
-(define acc (make-account 100 'secret-password))
-((acc 'secret-password 'withdraw) 40)
+(define peter-acc (make-account 100 'secret-password))
+((peter-acc 'secret-password 'withdraw) 40)
+
+;; 3.7
+(define (make-joint acc acc-pass joint-pass)
+  (lambda (password m)
+    (if (eq? password joint-pass)
+        (acc acc-pass m)
+        (error "Incorrect joint password"))))
+
+(define paul-acc
+  (make-joint peter-acc 'secret-password 'rosebud))
